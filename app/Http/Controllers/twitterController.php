@@ -73,7 +73,7 @@ class twitterController extends Controller
 
 		if (is_object($credentials) && !isset($credentials->error))
 		{
-			dd($credentials, $token);
+			// dd($credentials, $token);
 			// $credentials contains the Twitter user object with all the info about the user.
 			// Add here your own user logic, store profiles, create new users on your tables...you name it!
 			// Typically you'll want to store at least, user id, name and access tokens
@@ -83,12 +83,25 @@ class twitterController extends Controller
 			// Auth::login($user) should do the trick.
 
 			Session::put('access_token', $token);
+			Session::put('profile_date', [
+				'name' 	=> $credentials->name,
+				'id'	=> $credentials->id,
+				'screen_name'	=> $credentials->screen_name,
 
-			// return Redirect::to('/')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
+			]);
+
+
+			return Redirect::to('/home')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
 		}
 
 		// return Redirect::route('twitter.error')->with('flash_error', 'Crab! Something went wrong while signing you up!');
 		return dd('error');
 	}
+	}
+	public function tweet(Request $request)
+	{
+		$message = $request->only('tweet');
+		Twitter::postTweet(['status' => $message, 'format' => 'json']);
+		return "success";
 	}
 }

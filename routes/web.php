@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\twitterController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,16 +22,37 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Route::get('/tlogin')->name('tlogin');
-// Route::get('App\Http\Controllers\twitterController@callback')->name('twitter.callback');
+Route::get('/tlogin', [twitterController::class, 'login'])->name('twitter.login');
+Route::get('/tcallback', [twitterController::class, 'callback'])->name('twitter.callback');
 
-Route::get('/tlogin', [App\Http\Controllers\twitterController::class, 'login'])->name('twitter.login');
-Route::get('/tcallback', [App\Http\Controllers\twitterController::class, 'callback'])->name('twitter.callback');
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
 
-// Route::get('/tlogin', [App\Http\Controllers\twitterController::class, 'callback'])->name('twitter.callback');
 
-// Route::get('login', 'twitterController@login')->name('twitter.login');
-// Route::get('callback', 'twitterController@callback')->name('twitter.callback');
+// -------------------------------------- Testing -----------------------------------------------------
+Route::get('/dashboard', [PostController::class, 'index'])->name('dashboard');
+
+Route::post('/home', [App\Http\Controllers\twitterController::class, 'tweet'])->name('twitter.tweet');
+
+// Route::get('/tweet', function()
+// {
+// 	return Twitter::postTweet(['status' => 'Laravel is beautiful', 'format' => 'json']);
+// });
+Route::get('/userTimeline', function()
+{
+	 $posts = Twitter::getUserTimeline(['screen_name' => 'thujohn', 'count' => 20, 'format' => 'json']);
+	 $object = (array)json_decode($posts);
+	 dd($object);
+
+});
+
+Route::get('/search', function()
+{
+	$res = Twitter::getSearch(['q' => 'Something in the Rain']);
+	dd($res);
+
+});
+
+
 
