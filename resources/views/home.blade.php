@@ -6,20 +6,16 @@
             <div class="card">
                 <div class="card-header">{{ __('Tweets') }}</div>
 
-                <div class="card-body">
+                <div class="card-body pt-0">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
                     <form action='{{ route('twitter.tweet') }}' method="post" >
                         @csrf
-                        <div class="form-group m-4"> 
-                            <div>                       
-                                <label for="tweet">Tweet</label>
-                            </div>
+                        <div class="form-group m-4">                     
                             <div>
                                 <textarea class="form-control" rows="3" name="tweet" id="tweet" placeholder="Type a tweet......"></textarea>
                             </div>

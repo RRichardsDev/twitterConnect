@@ -9,10 +9,6 @@ body{
 	background: #333;
 	line-height: 1.6em;
 }
-a{
-	color:#fff;
-	text-decoration: none;
-}
 h1{
 	text-align: center;
 	margin-bottom: 20px;
@@ -38,7 +34,6 @@ h1{
 }
 .slide{
 	position: absolute;
-
 }
 .slide-copy{
 	position: absolute;
@@ -46,10 +41,7 @@ h1{
 	left: 0;
 	padding: 20px;
 	background: color #7f7f7f;
-	background: rgba(0,0,0,0.5);
-
-
-	
+	background: rgba(0,0,0,0.5);	
 }
 #prev, #next{
 	float:left;
@@ -64,20 +56,115 @@ h1{
 #next{
 	margin-left: -45px;
 }
-.video-thumb {
+.video-thumb-img {
 	width: 200px;
-	height:  200px;
+	height:  300px;
 	border-radius: 5px;
+	position: absolute;
 }
-.video-thumb:hover {
+.video-thumb-img:hover {
   position: absolute;
   opacity: 0.5;
   transition: .5s ease;
   background: #ffff;
 }
+.video-thumb-title {
+  display:none;
+  color: #fff;
+  padding: 4px;
+}
+
+.col:hover .video-thumb-title {
+  display:inline;
+  position:absolute;
+  opacity: 1;
+}
 .overlay {
 	width: 200px;
-	height:  200px;
+	height:  300px;
 	background: black;
 	border-radius: 5px;
+}
+/*Summary Specific*/
+.summary-description{
+	height: 180px; 
+	overflow-y: scroll;
+}
+.thumb-carosel-container{
+		border-radius: 5px;
+	padding-left:1px;
+	margin-top: 5px;
+	margin-left:5px;
+	width: 190px;
+	height: 50px;
+	background-color: rgba(51,51,51);
+	overflow-x: scroll;
+	overflow-y: scroll;
+	position: relative;
+}
+.video-thumb-sm {
+	border-radius: 5px;
+	height: 40px;
+	width: 40px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 2px;
+	margin-right:2px;
+	position: relative;
+}
+.video-thumb-sm:hover {
+  opacity: 0.5;
+  transition: .5s ease;
+}
+.break-line {
+	background-color: white;
+	margin-top: 25px;
+	bottom: 0;
+}
+.video-summary-img {
+	max-width: 200px;
+	max-height:  250px;
+	width:auto;
+	height: auto;
+	border-radius: 5px;
+	position: relative;
+	display: block;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+}
+.video-summary-img:hover {
+  opacity: 0.5;
+  transition: .5s ease;
+}
+.video-summary-img-container{
+	height:250px;
+	width:200px;
+}
+
+
+/*Reusable*/
+.min-height-3 {
+	min-height: 300px;
+}
+.text-links{
+	color: #D75745;
+	font-style: italic;
+}
+a:hover{
+	text-decoration-color: #D75745 !important;
+    text-decoration: underline;
+}
+
+.text-Otitle{
+	color: #D75745;
+	font-style: bold;
+}
+.navbar-brand-text {
+	color: #D75745 !important;
+	font-size: 1.6rem !important;
+}
+.dark-card {
+	background-color: #242424;
+	border: 0px;
 }

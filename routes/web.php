@@ -22,18 +22,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/tweet', [HomeController::class, 'index'])->name('home');
 
 Route::get('/tlogin', [twitterController::class, 'login'])->name('twitter.login');
 Route::get('/tcallback', [twitterController::class, 'callback'])->name('twitter.callback');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 
+Route::post('/home', [App\Http\Controllers\twitterController::class, 'tweet'])->name('twitter.tweet');
+
+Route::get('/summary', [App\Http\Controllers\SummaryController::class, 'index'])->name('summary');
+
 
 // -------------------------------------- Testing -----------------------------------------------------
 Route::get('/dashboard', [PostController::class, 'index'])->name('dashboard');
-
-Route::post('/home', [App\Http\Controllers\twitterController::class, 'tweet'])->name('twitter.tweet');
 
 // Route::get('/tweet', function()
 // {

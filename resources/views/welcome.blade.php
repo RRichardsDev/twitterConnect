@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
 @section('content')
 
 
@@ -13,7 +13,7 @@
         <div id="slider">
             <div class="slide">
                 <div class="slide-copy">
-                    <h2>Slider one</h2>
+                    <h2 class="text-Otitle">Slider one</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>         
                 </div>
                 <img src="img/slide1.jpg">
@@ -21,7 +21,7 @@
 
             <div class="slide">
                 <div class="slide-copy">
-                    <h2>Slider Two</h2>
+                    <h2 class="text-Otitle">Slider Two</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur aLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.dipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>         
                 </div>
                 <img src="img/slide2.jpg">
@@ -29,7 +29,7 @@
 
             <div class="slide ">
                 <div class="slide-copy">
-                    <h2>Slider Three</h2>
+                    <h2 class="text-Otitle">Slider Three</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisiciLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.ng elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>         
                 </div>
                 <img src="img/slide3.jpg">
@@ -37,7 +37,7 @@
 
             <div class="slide">
                 <div class="slide-copy">
-                    <h2>Slider Four</h2>
+                    <h2 class="text-Otitle">Slider Four</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>         
                 </div>
                 <img src="img/slide4.jpg">
@@ -45,7 +45,7 @@
 
             <div class="slide">
                 <div class="slide-copy">
-                    <h2>Slide Five</h2>
+                    <h2 class="text-Otitle">Slide Five</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisiLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>         
                 </div>
                 <img src="img/slide5.jpg">
@@ -58,38 +58,19 @@
         <div class="col-md-10 mt-5">
             <div class="container">
               <div class="row">
-                <div class="col">
-                    <div class="overlay">
-                        <img class="video-thumb" src="img/slide2.jpg">
+                
+                @for($i=1; $i<=12; $i++) 
+                    <div class="col">
+                        <div class="overlay">
+                            <img class="video-thumb-img" src="https://static.episodate.com/images/tv-show/full/29560.jpg">
+                        </div>
+                        <a href="#"><h5 class="text-Otitle pt-1 pl-1">Video {{$i}}</h5></a>
                     </div>
-                  One of four columns
+                @endfor
+
+
+
                 </div>
-                <div class="col">
-                    <div class="overlay">
-                        <img class="video-thumb" src="img/slide2.jpg">
-                    </div>
-                  One of four columns
-                </div>
-                <div class="col">
-                    <div class="overlay">
-                        <img class="video-thumb" src="img/slide2.jpg">
-                    </div>
-                  One of four columns
-                </div>
-                <div class="col">
-                    <div class="overlay">
-                        <img class="video-thumb" src="img/slide2.jpg">
-                    </div>
-                  One of four columns
-                </div>
-                <div class="col">
-                    <div class="overlay">
-                        <img class="video-thumb" src="img/slide2.jpg">
-                    </div>
-                  One of four columns
-                </div>
-            
-              </div>
             </div>    
         </div>
     </div>
