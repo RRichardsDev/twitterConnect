@@ -26,6 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-black shadow-lg">
             <div class="container">
                 <a class="navbar-brand navbar-brand-text" href="{{ url('/') }}">
+                     <img src="../img/sparrowLogoSquare.png" style="height:50px" class="nav-brand-icon">
                     {{ config('app.name', 'Sparrow') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -35,19 +36,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('posts') }}">Posts</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Tweet</a>
+                            <a class="nav-link" href="{{ route('home') }}">Tweets</a>
                         </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item mr-3">
+
+                            <input type="text" id="nav-search" class="search-box form-control" placeholder="Search...">
+                        </li>
                         @guest
-                            <li class="nav-item">
+                            <li class="nav-item">                                
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
@@ -84,5 +89,14 @@
             @yield('content')
         </main>
     </div>
+<footer class="page-footer font-small gray">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">Copyright © 2020. All Rights Reserved.</div>
+  <div class="text-center">Data Provided By: <a target="_blank" class="text-Otitle" href="https://www.episodate.com">www.episodate.com</a></div>
+  <div class="text-center">Contact me: <a class="text-Otitle" href="mailto:rhodri.developer@gmailcom">rhodri.developer@gmailcom</a></div>
+  <!-- Copyright -->
+
+</footer>
 </body>
 </html>

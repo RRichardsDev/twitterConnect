@@ -40,7 +40,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: true
 // });
 
-	$(document).ready(function(){
+$(document).ready(function(){
 	//Set Optionss
 	var speed = 3000;
 	var autoswitch = true;

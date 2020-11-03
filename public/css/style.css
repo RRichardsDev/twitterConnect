@@ -1,6 +1,6 @@
-*{
-	margin: 0;
-	padding: 0;
+.nav-brand-icon{
+	height: 50px!important;
+	width: 50px!important;
 }
 body{
 	font-family: arial;
@@ -42,6 +42,7 @@ h1{
 	padding: 20px;
 	background: color #7f7f7f;
 	background: rgba(0,0,0,0.5);	
+	width: 100%;
 }
 #prev, #next{
 	float:left;
@@ -91,21 +92,22 @@ h1{
 	overflow-y: scroll;
 }
 .thumb-carosel-container{
-		border-radius: 5px;
+	border-radius: 5px;
 	padding-left:1px;
 	margin-top: 5px;
 	margin-left:5px;
-	width: 190px;
-	height: 50px;
+	height: 60px;
+    width: 215px;
 	background-color: rgba(51,51,51);
 	overflow-x: scroll;
 	overflow-y: scroll;
 	position: relative;
+	padding-top: 2px;
 }
 .video-thumb-sm {
 	border-radius: 5px;
-	height: 40px;
-	width: 40px;
+	height: 46px;
+	width: 46px;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	margin-left: 2px;
@@ -144,6 +146,7 @@ h1{
 
 
 /*Reusable*/
+
 .min-height-3 {
 	min-height: 300px;
 }
@@ -154,6 +157,7 @@ h1{
 a:hover{
 	text-decoration-color: #D75745 !important;
     text-decoration: underline;
+    color:#D75745 !important;
 }
 
 .text-Otitle{
@@ -168,3 +172,35 @@ a:hover{
 	background-color: #242424;
 	border: 0px;
 }
+.dark-light-card {
+	background-color: #333333;
+	border: 0px;
+}
+.btn-orange {
+	color: #fff;
+  	background-color: #D75745;
+  	border-color: #D75745;
+}
+.hashtag{
+	color: #3490dc;
+}
+/*nav*/
+.search-box{
+	border-radius: 5px;
+	margin: 5px;
+	height:30px;
+}
+/*tweets*/
+.tweet-icon{
+	border-radius: 20px;
+	width:30px;
+	height:30px;
+}
+.minimal-gray{
+	color:gray; 
+	font-size: 10px;
+}
+.float-r{
+	float: right;
+}
+
