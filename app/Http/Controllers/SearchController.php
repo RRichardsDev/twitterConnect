@@ -39,7 +39,7 @@ class SearchController extends Controller
     		// $first = strtolower($response['tv_shows'][1]['name'][0]);
     			$alphaResponse = json_decode($response->getBody(), true);
     			$count = (count($alphaResponse['tv_shows']) - 1);
-    			
+    			 
     			$first = $alphaResponse['tv_shows'][$count]['name'][0];
     			// dd($first);
     		// dd($response['tv_shows']);
