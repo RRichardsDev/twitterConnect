@@ -26,7 +26,10 @@ Auth::routes();
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/tweet', [HomeController::class, 'index'])->name('home');
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
+
 Route::post('/searchTvShow', [SearchController::class, 'index'])->name('searchTvShow');
+Route::get('/searchTvShow/{letter}', [SearchController::class, 'alpha'])->name('searchTvShowAlpha');
+
 Route::get('/summary/{showId}', [App\Http\Controllers\SummaryController::class, 'index'])->name('summary');
 
 

@@ -82,19 +82,18 @@
 	            		<table class="table table-hover table-dark">
 					  <thead>
 					    <tr>
-					    	
-					     	<th class="text-Otitle" scope="col-2">Date</th>
-					     	<th class="text-Otitle" scope="col-4">Episode</th>
-					     	<th class="text-Otitle" scope="col-8">Name</th>
+					    	<th class="text-Otitle col-2" scope="col">Episode</th>
+					     	<th class="text-Otitle col-2" scope="col">Date</th>					     	
+					     	<th class="text-Otitle col-8" scope="col">Name</th>
 					    </tr>
 					  </thead>
 					  <tbody>
 					  	@foreach($tvShow['episodes'] as $episode)
 						    <tr>
-						     	<td>{{$episode['air_date']}}</td>
-						     	<td>
+						    	<td>
 						     		{{'S'.(strlen($episode['season']) == 1 ? '0'.$episode['season'] : $episode['season']).
 						     		'E'.(strlen($episode['episode'])==1 ? '0'.$episode['episode'] : $episode['episode'])}}</td>
+						     	<td>{{$episode['air_date']}}</td>
 						     	<td><a href="" class="text-Otitle">{{$episode['name']}}</a></td>
 						    </tr>
 					   	@endforeach
