@@ -154,6 +154,7 @@ h1{
 	color: #D75745;
 	font-style: italic;
 }
+
 a:hover{
 	text-decoration-color: #D75745 !important;
     text-decoration: underline;

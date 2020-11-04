@@ -20,7 +20,7 @@
 		                		<h2 class="pull-left mb-3 text-Otitle"> {{$tvShow['name']}} </h2>
 		                		<h5>Description</h5>
 		                		<div class="summary-description">
-		                		<p>{{$tvShow['description']}}</p>		                		
+		                		<p>{!!$tvShow['description']!!}</p>		                		
 		                	</div>
 		                	</div>
 			                	<div class="col-md-3 pl-0"> 

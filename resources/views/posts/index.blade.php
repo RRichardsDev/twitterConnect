@@ -10,7 +10,9 @@
 	                        <div class="alert alert-success" role="alert">
 	                            {{ session('status') }}
 	                        </div>
-	                    @endif                    
+	                    @endif
+	                    <a href ="https://twitter.com/marbzin">b - the album ✨</a>
+	                     <a href="https://twitter.com/AMagicWriter" target="_blank">@AMagicWriter</a> I went off the guy who plays Flash after he throttled one his own fans in Iceland.                 
 	                </div>
 
             </div>

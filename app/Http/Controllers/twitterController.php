@@ -13,8 +13,6 @@ class twitterController extends Controller
 	{
 		$sign_in_twitter = true;
 		$force_login = false;
-
-
 		// Make sure we make this request w/o tokens, overwrite the default values in case of login.
 		\Twitter::reconfig(['token' => '', 'secret' => '']);
 
@@ -29,7 +27,6 @@ class twitterController extends Controller
 			return Redirect::to($url);
 		}
 		return dd('failed');
-		//return Redirect::route('twitter.error');
 	}
 
 	public function callback()
@@ -45,14 +42,9 @@ class twitterController extends Controller
 		// 	'token'  => 'e5KWihWqZfECKrYsM4JjKHk8p',
 		// 	'secret' => 'wDwMRRg2gA9Q2rf4dG7TT18fT7EoL8jDutjH7FN4DeWDbQFp6y',
 		// ];
-
-
-		// dd($request_token);
 		\Twitter::reconfig($request_token);
 
-
 		$oauth_verifier = false;
-		// dd($request_token);
 
 		if (request()->has('oauth_verifier'))
 		{
@@ -61,7 +53,6 @@ class twitterController extends Controller
 			$token = \Twitter::getAccessToken($oauth_verifier);
 		}
 
-
 		if (!isset($request_token['secret']))
 		{
 			// return Redirect::route('twitter.error')->with('flash_error', 'We could not log you in on Twitter.');
@@ -69,7 +60,6 @@ class twitterController extends Controller
 		}
 
 		$credentials = \Twitter::getCredentials();
-
 
 		if (is_object($credentials) && !isset($credentials->error))
 		{
@@ -89,9 +79,7 @@ class twitterController extends Controller
 				'screen_name'	=> $credentials->screen_name,
 
 			]);
-
-
-			return Redirect::to('/home')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
+			return Redirect::to('/')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
 		}
 
 		// return Redirect::route('twitter.error')->with('flash_error', 'Crab! Something went wrong while signing you up!');
@@ -104,4 +92,61 @@ class twitterController extends Controller
 		Twitter::postTweet(['status' => $message, 'format' => 'json']);
 		return "success";
 	}
+
+	public function searchTweet(Request $request)
+    {
+    	$query = "#arrow";    	
+    	$since = "2020-11-04";
+		$until = "2020-11-03";
+
+		$client = new \GuzzleHttp\Client(['base_uri' =>'https://api.twitter.com/1.1/search/tweets.json']);
+		$token = 'AAAAAAAAAAAAAAAAAAAAAK49IQEAAAAAYdDNPwABQb7SgT%2BYCTNB04BNJBI%3DqNOxOtlBdMa30LpevnzpDea3zZjqQjC3ubavj5LSR9TRPaN0jT';
+		$headers = ['Authorization' => 'Bearer ' . $token,];
+
+		$searchQuery = $this->buildURI($query, $until, $since);
+		// dd($searchQuery);
+
+		$response = $client->request('GET', $searchQuery, ['headers' => $headers] );
+		$response = json_decode($response->getBody(), true);
+		$tweets = $response['statuses'];
+		$tweets = $this->linkUser($tweets);
+		$tweets = $this->twitterDate($tweets);
+		return view('home')->with('tweets',$tweets);
+
+
+    	// ------thujohn--------
+    	// $query = $request->only('nav-search');
+    	// $query = "until%3A2020-11-02%20since%3A2020-11-01%20the%20flash";
+     //    $response =Twitter::getSearch(['q' => $query, 'count'=> 50]);
+
+     //    $formattedTweets = $this->formatTweets($response->statuses);
+     //    return view('home')->with('tweets', $response->statuses);
+    }
+    public function buildURI($query, $since, $until)
+    {
+		$query = str_replace(" ", "%20", $query);
+		$query = str_replace("#", "%23", $query);
+		$query = str_replace("@", "%40", $query);
+		$since = "since%3A".$since;
+		$until = "until%3A".$until;
+
+		$searchQuery = '?q=' . $until . "%20" . $since . "%20" . $query;
+		return $searchQuery;
+    }
+    public function twitterDate($tweets)
+    {
+    	for($i=0; $i<=(count($tweets)-1); $i++){
+    		$tweets[$i]['created_at'] = Twitter::ago($tweets[$i]['created_at']);
+
+    	}
+    	return $tweets;
+    }
+    public function linkUser($tweets)
+    {
+    	for($i=0; $i<=(count($tweets)-1); $i++){
+    		$tweets[$i]['user']['name'] = '<a class= "text-Otitle" target="_blank" href ="https://twitter.com/' . $tweets[$i]['user']['screen_name'] . '">' . $tweets[$i]['user']['name'] . '</a>';
+    	}
+
+    	return $tweets;
+    }
 }

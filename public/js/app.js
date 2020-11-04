@@ -49801,7 +49801,7 @@ $(document).ready(function () {
   //Set Optionss
   var speed = 3000;
   var autoswitch = true;
-  var autoswitchSpeed = 7000; //Add initial active class
+  var autoswitchSpeed = 15000; //Add initial active class
 
   $('.slide').first().addClass('active'); //Hide all slides
 
@@ -49809,8 +49809,8 @@ $(document).ready(function () {
 
   $('.active').show(); //slider buttons
 
-  $('#next').on('click', nextSlide);
-  $('#prev').on('click', prevSlide); //autoswitch
+  $('#next').on('click', nextSlide());
+  $('#prev').on('click', prevSlide()); //autoswitch
 
   if (autoswitch == true) {
     setInterval(function () {

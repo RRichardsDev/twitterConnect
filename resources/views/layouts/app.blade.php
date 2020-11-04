@@ -42,14 +42,19 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">Tweets</a>
                         </li>
+                        <li class="nav-item">
+                            <form action="{{ route('twitter.search') }}" method="post">@csrf<button type="submit">SearchDemo</button></form>
+                        </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item mr-3">
-
-                            <input type="text" id="nav-search" class="search-box form-control" placeholder="Search...">
+                            <form id="search-form" action="{{ route('searchTvShow') }}" method="post">@csrf<input type="text" name="nav-search"id="nav-search" class="search-box form-control" placeholder="Search...">
+                                {{-- <button id="nav-search-button" type="submit">Search</button> --}}
+                            </form>
                         </li>
                         @guest
                             <li class="nav-item">                                
@@ -94,7 +99,7 @@
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">Copyright © 2020. All Rights Reserved.</div>
   <div class="text-center">Data Provided By: <a target="_blank" class="text-Otitle" href="https://www.episodate.com">www.episodate.com</a></div>
-  <div class="text-center">Contact me: <a class="text-Otitle" href="mailto:rhodri.developer@gmailcom">rhodri.developer@gmailcom</a></div>
+  <div class="text-center">Contact: <a class="text-Otitle" href="mailto:rhodri.developer@gmailcom">rhodri.developer@gmailcom</a></div>
   <!-- Copyright -->
 
 </footer>

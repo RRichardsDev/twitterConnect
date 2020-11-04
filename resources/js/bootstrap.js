@@ -44,7 +44,7 @@ $(document).ready(function(){
 	//Set Optionss
 	var speed = 3000;
 	var autoswitch = true;
-	var autoswitchSpeed = 7000;
+	var autoswitchSpeed = 15000;
 
 	//Add initial active class
 	$('.slide').first().addClass('active');
@@ -56,8 +56,8 @@ $(document).ready(function(){
 	$('.active').show();
 
 	//slider buttons
-	$('#next').on('click', nextSlide);
-	$('#prev').on('click', prevSlide);
+	$('#next').on('click', nextSlide());
+	$('#prev').on('click', prevSlide());
 
 	//autoswitch
 

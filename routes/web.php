@@ -5,6 +5,8 @@ use App\Http\Controllers\twitterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\SearchController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,7 @@ Auth::routes();
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/tweet', [HomeController::class, 'index'])->name('home');
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::post('/searchTvShow', [SearchController::class, 'index'])->name('searchTvShow');
 Route::get('/summary/{showId}', [App\Http\Controllers\SummaryController::class, 'index'])->name('summary');
 
 
@@ -31,7 +34,7 @@ Route::get('/tlogin', [twitterController::class, 'login'])->name('twitter.login'
 Route::get('/tcallback', [twitterController::class, 'callback'])->name('twitter.callback');
 Route::post('/home', [App\Http\Controllers\twitterController::class, 'tweet'])->name('twitter.tweet');
 
-
+Route::post('/tweet', [App\Http\Controllers\twitterController::class, 'searchTweet'])->name('twitter.search');
 
 
 // -------------------------------------- Testing -----------------------------------------------------
