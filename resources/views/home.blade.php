@@ -38,7 +38,8 @@
             </div>
             <div class="card dark-card mt-2">
                 <div class="card-body dark-card pt-0">
-                    <h3 class=" p-2 text-Otitle">Tweets</h3>
+                    <h3 class=" pt-2 text-Otitle">Tweets - <a class="font-weight-bold text-Otitle">{{$data['search']}} </a></h3>
+                        <p class=" pl-1 text-Otitle">{{$data['episode']}}</p>
                         @foreach($tweets as $tweet)
                             <div class="card dark-light-card m-2">
                                 <div class="m-2">                           

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> --}}
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -39,12 +40,18 @@
                         {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('posts') }}">Posts</a>
                         </li> --}}
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">Tweets</a>
                         </li>
                         <li class="nav-item">
-                            <form action="{{ route('twitter.search') }}" method="post">@csrf<button type="submit">SearchDemo</button></form>
-                        </li>
+                            <form action="{{ route('twitter.search')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="search" value="arrow">
+                                <input type="hidden" value="2020-11-01" name="from">
+                                <input type="hidden" value="2020-11-05" name="until">
+                                <button type="submit">SearchDemo</button>
+                            </form>
+                        </li> --}}
 
                     </ul>
 
@@ -52,7 +59,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item mr-3">
-                            <form id="search-form" action="{{ route('searchTvShow') }}" method="post">@csrf<input type="text" name="nav-search"id="nav-search" class="search-box form-control" placeholder="Search...">
+                            <form id="search-form" action="{{ route('searchTvShow') }}" method="post">@csrf<input type="text" name="nav-search"id="nav-search" class="search-box form-control nav-search" placeholder="Search...">
                                 {{-- <button id="nav-search-button" type="submit">Search</button> --}}
                             </form>
                         </li>

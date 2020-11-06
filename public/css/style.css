@@ -159,6 +159,8 @@ a:hover{
 	text-decoration-color: #D75745 !important;
     text-decoration: underline;
     color:#D75745 !important;
+    cursor: pointer;
+
 }
 
 .text-Otitle{
@@ -204,4 +206,14 @@ a:hover{
 .float-r{
 	float: right;
 }
+.impOrange{
+	color: #D75745 !important;
+}
+.tab-content > .tab-pane {
+  display: none;
+}
+.tab-content > .active {
+  display: block;
+}
+
 

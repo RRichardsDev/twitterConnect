@@ -21,7 +21,7 @@ class WelcomeController extends Controller
     {
     	$endpoint = "https://www.episodate.com//api/most-popular";
 		$client = new \GuzzleHttp\Client();
-		$page = 2;
+		$page = 1;
 
 		$response = $client->request('GET', $endpoint, ['query' => [
 		    'page' => $page, 		    

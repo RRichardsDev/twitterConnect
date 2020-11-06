@@ -78,29 +78,99 @@
             <div class="card dark-card mt-4">
             	<div class="card dark-card">
             		<div class="card-body min-height-3">
-	            		<h2 class="pull-left mb-3 text-Otitle"> Episodes </h2>
-	            		<table class="table table-hover table-dark">
-					  <thead>
-					    <tr>
-					    	<th class="text-Otitle col-2" scope="col">Episode</th>
-					     	<th class="text-Otitle col-2" scope="col">Date</th>					     	
-					     	<th class="text-Otitle col-8" scope="col">Name</th>
+	            		<div class="container"><h2 class="pull-left mb-3 text-Otitle"> Episodes </h2></div>
+
+	            		<div class="container">
+						  	<ul class="nav nav-tabs">
+						  		<li class="nav-item">
+								    <a class="nav-link active" href="#menu1" data-toggle="tab"><span class="text-Otitle">Season 1</span></a>
+								  </li>
+						  		@for($i=2; $i <= count($tvShow['seasons']); $i++)
+						  			<li class="nav-item">
+								    	<a class="nav-link" href="#menu{{$i}}" data-toggle="tab"><span class="text-Otitle">Season {{$i}}</span></a>
+								  	</li>
+							  	@endfor								
+							</ul>							
+  	<div class="tab-content">
+  			<div id="menu1" class="tab-pane fade in active show">
+		      	<table class="table table-hover table-dark">
+				  <thead class="dark-light-card">
+				    <tr>
+				    	<th class="text-Otitle" scope="col">Episode</th>
+				     	<th class="text-Otitle" scope="col">Date</th>					     	
+				     	<th class="text-Otitle" scope="col">Name</th>
+				     	<th></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	@foreach($tvShow['seasons'][1] as $episode)
+					    <tr>	    
+					    	<a><td class="align-middle">
+					     		{{'S'.(strlen($episode['season']) == 1 ? '0'.$episode['season'] : $episode['season']).
+					     		'E'.(strlen($episode['episode'])==1 ? '0'.$episode['episode'] : $episode['episode'])}}</td></a>
+					     	<td class="align-middle">{{$episode['air_date']}}</td>
+					     	<td class="align-middle">
+
+					     	<form action="{{ route('twitter.search')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="episode" value="{{'S'.(strlen($episode['season']) == 1 ? '0'.$episode['season'] : $episode['season']).
+					     		'E'.(strlen($episode['episode'])==1 ? '0'.$episode['episode'] : $episode['episode'])}}">
+                                <input type="hidden" name="search" value="{{$tvShow['name']}}">
+                                <input type="hidden" name="link" value="{{$tvShow['id']}}">
+                                <input type="hidden" value="{{$episode['air_date']}}" name="from">
+                                                           						                         
+					     		<a onclick="this.closest('form').submit();return false;" class="text-Otitle">{{$episode['name']}}
+					     		</a>
+					     	</form>
+					     </td>
+					     	<td><a href=""><img style="height: 25px; width: 25px" src="../img/twitter_logo.png"></a></td>
 					    </tr>
-					  </thead>
-					  <tbody>
-					  	@foreach($tvShow['episodes'] as $episode)
-						    <tr>
-						    	<td>
-						     		{{'S'.(strlen($episode['season']) == 1 ? '0'.$episode['season'] : $episode['season']).
-						     		'E'.(strlen($episode['episode'])==1 ? '0'.$episode['episode'] : $episode['episode'])}}</td>
-						     	<td>{{$episode['air_date']}}</td>
-						     	<td><a href="" class="text-Otitle">{{$episode['name']}}</a></td>
-						    </tr>
-					   	@endforeach
-					  </tbody>
-					</table>
+				   	@endforeach
+				  </tbody>
+				</table>
+		    </div>
+  		@for($i=2; $i <= count($tvShow['seasons']); $i++)
+  			<div id="menu{{$i}}" class="tab-pane fade in active">
+		      	<table class="table table-hover table-dark">
+				  <thead class="dark-light-card">
+				    <tr>
+				    	<th class="text-Otitle" scope="col">Episode</th>
+				     	<th class="text-Otitle" scope="col">Date</th>					     	
+				     	<th class="text-Otitle" scope="col">Name</th>
+				     	<th></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	@foreach($tvShow['seasons'][$i] as $episode)
+					    <tr>	    
+					    	<a><td class="align-middle">
+					     		{{'S'.(strlen($episode['season']) == 1 ? '0'.$episode['season'] : $episode['season']).
+					     		'E'.(strlen($episode['episode'])==1 ? '0'.$episode['episode'] : $episode['episode'])}}</td></a>
+					     	<td class="align-middle">{{$episode['air_date']}}</td>
+					     	<td class="align-middle">
+
+					     	<form action="{{ route('twitter.search')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="episode" value="{{'S'.(strlen($episode['season']) == 1 ? '0'.$episode['season'] : $episode['season']).
+					     		'E'.(strlen($episode['episode'])==1 ? '0'.$episode['episode'] : $episode['episode'])}}">
+                                <input type="hidden" name="search" value="{{$tvShow['name']}}">
+                                <input type="hidden" name="link" value="{{$tvShow['id']}}">
+                                <input type="hidden" value="{{$episode['air_date']}}" name="from">
+                                                           						                         
+					     		<a onclick="this.closest('form').submit();return false;" class="text-Otitle">{{$episode['name']}}
+					     		</a>
+					     	</form>
+					     </td>
+					     	<td><a href=""><img style="height: 25px; width: 25px" src="../img/twitter_logo.png"></a></td>
+					    </tr>
+				   	@endforeach
+				  </tbody>
+				</table>
+		    </div>
+		@endfor
+	</div>
+						</div>
 	            	</div>
-	            	
 	            </div>
             </div>
 
